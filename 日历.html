@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .week span{
+            width: 50px;
+            height: 30px;
+            background: #6fbfe6;
+            text-align: center;
+            line-height: 25px;
+            border: 1px solid #e0dbdb;
+            display: inline-block;
+            color: white;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 350px;
+            margin: 0 auto;
+        }
+
+        h2{
+            text-align: center;
+            margin: 30px 0;
+            color: #b0b0b7;
+        }
+        .week{
+            width: 450px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .box span{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #dedede;
+            background: hotpink;
+            text-align: center;
+            line-height: 50px;
+            box-sizing: border-box;
+        }
+
+        .col1{
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+
+   var year=prompt("请输入年份");
+   var month=prompt("请输入月份");
+
+    document.write("<h2>"+year+"年"+month+"月"+"</h2>");
+
+</script>
+
+<div class="week">
+    <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+</div>
+
+<script>
+
+
+
+    var day=0;
+
+    for(var year1=1900;year1<year;year1++){
+
+        if(year1%4==0&&year1%100!=0||year1%400==0){
+
+            day=day+366;
+        }
+        else{
+            day=day+365;
+        }
+
+    }
+
+
+//    从1月到输入月的前一个月额天数
+    var monthdays=0;
+
+    for(var month1=1;month1<month;month1++){
+
+        if(month1==1||month1==3||month1==5||month1==7||month1==8||month1==10){
+
+            monthdays=monthdays+31;
+        }
+        else if(month1==2){
+
+                if(year%4==0&&year%100!=0||year%400==0){
+
+                    monthdays=monthdays+29;
+                }
+                else{
+                    monthdays=monthdays+28;
+                }
+        }
+        else{
+            monthdays=monthdays+30;
+        }
+
+    }
+    var total=day+monthdays+1;
+    var week=total%7;
+
+    if(week==0){
+
+        week=7
+
+    }
+
+    document.write("<div class='box'>");
+
+
+            for(kong=1;kong<week;kong++){
+
+                document.write("<span class='col1'>&nbsp;</span>")
+            }
+
+            if(month==2){
+
+                if(year%4==0&&year%100!=0||year%400==0){
+                    var tian=29;
+                }
+                else{
+                    var tian=28;
+                }
+            }
+            else{
+
+                if(month1==1||month1==3||month1==5||month1==7||month1==8||month1==10){
+
+                    var tian=31;
+                }
+                else{
+                    var tian=30;
+                }
+
+            }
+
+
+            for(ri=1;ri<=tian;ri++) {
+
+                document.write("<span>" + ri + "</span>")
+            }
+
+    document.write("</div>");
+
+
+
+</script>
+
+</body>
+</html>
